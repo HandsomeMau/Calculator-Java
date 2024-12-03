@@ -1,27 +1,94 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import java.awt.color.*;
+
+//Important: Read the Note in the Calculate Class
 
 public class GUI{
+    public static int currentBox = 1;
+
     private static JFrame jFrame;
-    private static JLabel inputTextBox;
-    private static JButton c1,c2,c3,c4,c5,c6,c7,c8,c9,c0,ca,cs,cm,cd;
+    public static JLabel inputTextBox1, inputTextBox2, inputTextBox3, equalsSignBox, ansBox;
+
+    //c1 for clicking 1, c2 for clicking 2, ca for clicking addition etc. boxField1 is for the Label inputTextBox1, 2 for 2 etc.
+    private static JButton c1,c2,c3,c4,c5,c6,c7,c8,c9,c0,ca,cs,cm,cd,ce,boxField1, boxField2, boxField3;
 
     public GUI() {
         //Main Frame
         jFrame = new JFrame("Calculator");
         jFrame.setVisible(true);
         jFrame.setLayout(null);
-        jFrame.setSize(1280, 720);
+        jFrame.setSize(1920, 1080);
 
         //Text Boxes
-        inputTextBox = new JLabel();
-        inputTextBox.setText("");
-        inputTextBox.setVisible(true);
-        inputTextBox.setBounds(500,0,300,300);
-        jFrame.add(inputTextBox);
+        inputTextBox1 = new JLabel();
+        inputTextBox1.setText("");
+        inputTextBox1.setVisible(true);
+        inputTextBox1.setBounds(450,100,100,100);
+        inputTextBox1.setBackground(Color.blue);
+        inputTextBox1.setOpaque(true);
+        inputTextBox1.setFont(new Font("Arial", Font.PLAIN, 20));
+        jFrame.add(inputTextBox1);
+
+        inputTextBox2 = new JLabel();
+        inputTextBox2.setText("");
+        inputTextBox2.setVisible(true);
+        inputTextBox2.setBounds(650,100,100,100);
+        inputTextBox2.setBackground(Color.blue);
+        inputTextBox2.setOpaque(true);
+        inputTextBox2.setFont(new Font("Arial", Font.PLAIN, 20));
+        jFrame.add(inputTextBox2);
+
+        inputTextBox3 = new JLabel();
+        inputTextBox3.setText("");
+        inputTextBox3.setVisible(true);
+        inputTextBox3.setBounds(850,100,100,100);
+        inputTextBox3.setBackground(Color.blue);
+        inputTextBox3.setOpaque(true);
+        inputTextBox3.setFont(new Font("Arial", Font.PLAIN, 20));
+        jFrame.add(inputTextBox3);
+
+        equalsSignBox = new JLabel();
+        equalsSignBox.setText("=");
+        equalsSignBox.setVisible(true);
+        equalsSignBox.setBounds(1050,100,100,100);
+        equalsSignBox.setBackground(Color.blue);
+        equalsSignBox.setOpaque(true);
+        equalsSignBox.setFont(new Font("Arial", Font.PLAIN, 20));
+        jFrame.add(equalsSignBox);
+
+        ansBox = new JLabel();
+        ansBox.setText("");
+        ansBox.setVisible(true);
+        ansBox.setBounds(1250,100,100,100);
+        ansBox.setBackground(Color.blue);
+        ansBox.setOpaque(true);
+        ansBox.setFont(new Font("Arial", Font.PLAIN, 20));
+        jFrame.add(ansBox);
+
+        //3 Box Buttons
+
+        boxField1 = new JButton();
+        boxField1.setBounds(100,600,100,100);
+        boxField1.setVisible(true);
+        boxField1.setText("Box 1");
+        jFrame.add(boxField1);
+
+        boxField2 = new JButton();
+        boxField2.setBounds(200,600,100,100);
+        boxField2.setVisible(true);
+        boxField2.setText("Box 2");
+        jFrame.add(boxField2);
+
+        boxField3 = new JButton();
+        boxField3.setBounds(300,600,100,100);
+        boxField3.setVisible(true);
+        boxField3.setText("Box 3");
+        jFrame.add(boxField3);
+
+
 
 
         //Number Buttons
@@ -96,88 +163,206 @@ public class GUI{
         cd.setVisible(true);
         jFrame.add(cd);
 
-        //Action Listeners
+        ce = new JButton("=");
+        ce.setBounds(800,500,100,100);
+        ce.setVisible(true);
+        jFrame.add(ce);
+
+        //Action Listeners, This part is EXTREMELY Long
+        boxField1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                currentBox = 1;
+                System.out.println("Current Box is 1"); // Debugging
+            }
+        });
+
+        boxField2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                currentBox = 2;
+                System.out.println("Current Box is 2"); // Debugging
+            }
+        });
+
+        boxField3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                currentBox = 3;
+                System.out.println("Current Box is 3");
+            }
+        });
+
+
+
         c1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                inputTextBox.setText(inputTextBox.getText() + "1");
+                if(currentBox == 1) {
+                    inputTextBox1.setText(inputTextBox1.getText() + "1");
+                } else if (currentBox == 3) {
+                    inputTextBox3.setText(inputTextBox3.getText()+ "1");
+                } else {
+                    System.out.println("Error");
+                }
             }
         });
 
         c2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                inputTextBox.setText(inputTextBox.getText() + "2");
+                if(currentBox == 1) {
+                    inputTextBox1.setText(inputTextBox1.getText() + "2");
+                } else if (currentBox == 3) {
+                    inputTextBox3.setText(inputTextBox3.getText()+ "2");
+                } else {
+                    System.out.println("Error");
+                }
             }
         });
 
         c3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                inputTextBox.setText(inputTextBox.getText() + "3");
+                if(currentBox == 1) {
+                    inputTextBox1.setText(inputTextBox1.getText() + "3");
+                } else if (currentBox == 3) {
+                    inputTextBox3.setText(inputTextBox3.getText()+ "3");
+                } else {
+                    System.out.println("Error");
+                }
             }
         });
 
         c4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                inputTextBox.setText(inputTextBox.getText() + "4");
+                if(currentBox == 1) {
+                    inputTextBox1.setText(inputTextBox1.getText() + "4");
+                } else if (currentBox == 3) {
+                    inputTextBox3.setText(inputTextBox3.getText()+ "4");
+                } else {
+                    System.out.println("Error");
+                }
             }
         });
 
         c5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                inputTextBox.setText(inputTextBox.getText() + "5");
+                if(currentBox == 1) {
+                    inputTextBox1.setText(inputTextBox1.getText() + "5");
+                } else if (currentBox == 3) {
+                    inputTextBox3.setText(inputTextBox3.getText()+ "5");
+                } else {
+                    System.out.println("Error");
+                }
             }
         });
 
         c6.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                inputTextBox.setText(inputTextBox.getText() + "6");
+                if(currentBox == 1) {
+                    inputTextBox1.setText(inputTextBox1.getText() + "6");
+                } else if (currentBox == 3) {
+                    inputTextBox3.setText(inputTextBox3.getText()+ "6");
+                } else {
+                    System.out.println("Error");
+                }
             }
         });
 
         c7.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                inputTextBox.setText(inputTextBox.getText() + "7");
+                if(currentBox == 1) {
+                    inputTextBox1.setText(inputTextBox1.getText() + "7");
+                } else if (currentBox == 3) {
+                    inputTextBox3.setText(inputTextBox3.getText()+ "7");
+                } else {
+                    System.out.println("Error");
+                }
             }
         });
 
         c8.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                inputTextBox.setText(inputTextBox.getText() + "8");
+                if(currentBox == 1) {
+                    inputTextBox1.setText(inputTextBox1.getText() + "8");
+                } else if (currentBox == 3) {
+                    inputTextBox3.setText(inputTextBox3.getText()+ "8");
+                } else {
+                    System.out.println("Error");
+                }
             }
         });
 
         c9.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                inputTextBox.setText(inputTextBox.getText() + "9");
+                if(currentBox == 1) {
+                    inputTextBox1.setText(inputTextBox1.getText() + "9");
+                } else if (currentBox == 3) {
+                    inputTextBox3.setText(inputTextBox3.getText()+ "9");
+                } else {
+                    System.out.println("Error");
+                }
             }
         });
 
         c0.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                inputTextBox.setText(inputTextBox.getText() + "0");
+                if(currentBox == 1) {
+                    inputTextBox1.setText(inputTextBox1.getText() + "0");
+                } else if (currentBox == 3) {
+                    inputTextBox3.setText(inputTextBox3.getText()+ "0");
+                } else {
+                    System.out.println("Error");
+                }
             }
         });
 
         ca.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                inputTextBox.setText(inputTextBox.getText() + "+");
+                if(currentBox == 2) {
+                    inputTextBox2.setText("+");
+                } else {
+                    System.out.println("Error");
+                }
             }
         });
 
         cs.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                inputTextBox.setText(inputTextBox.getText() + "-");
+                if(currentBox == 2) {
+                    inputTextBox2.setText("-");
+                } else {
+                    System.out.println("Error");
+                }
             }
         });
 
         cm.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                inputTextBox.setText(inputTextBox.getText() + "*");
+                if(currentBox == 2) {
+                    inputTextBox2.setText("*");
+                } else {
+                    System.out.println("Error");
+                }
             }
         });
 
         cd.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                inputTextBox.setText(inputTextBox.getText() + "/");
+                if(currentBox == 2) {
+                    inputTextBox2.setText("/");
+                } else {
+                    System.out.println("Error");
+                }
+            }
+        });
+
+        ce.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if(inputTextBox2.getText().equals("+")) {
+                    Calculate.addition(
+                            Integer.parseInt(inputTextBox1.getText()),
+                            Integer.parseInt(inputTextBox1.getText()),
+                            inputTextBox2.getText()
+                    );
+
+
+                }
             }
         });
 
