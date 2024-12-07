@@ -8,6 +8,7 @@ import java.awt.color.*;
 
 public class GUI{
     public static int currentBox = 1;
+    public static int ans;
 
     private static JFrame jFrame;
     public static JLabel inputTextBox1, inputTextBox2, inputTextBox3, equalsSignBox, ansBox;
@@ -354,20 +355,42 @@ public class GUI{
 
         ce.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(inputTextBox2.getText().equals("+")) {
+                if (inputTextBox2.getText().equals("+")) {
                     Calculate.addition(
                             Integer.parseInt(inputTextBox1.getText()),
-                            Integer.parseInt(inputTextBox1.getText()),
+                            Integer.parseInt(inputTextBox3.getText()),
                             inputTextBox2.getText()
                     );
+                    ansBox.setText(Integer.toString(ans));
+                }
 
+                else if (inputTextBox2.getText().equals("-")) {
+                    Calculate.subtraction(
+                        Integer.parseInt(inputTextBox1.getText()),
+                        Integer.parseInt(inputTextBox3.getText()),
+                        inputTextBox2.getText()
+                    );
+                    ansBox.setText(Integer.toString(ans));
+                }
 
+                else if (inputTextBox2.getText().equals("*")) {
+                    Calculate.multiply(
+                            Integer.parseInt(inputTextBox1.getText()),
+                            Integer.parseInt(inputTextBox3.getText()),
+                            inputTextBox2.getText()
+                    );
+                    ansBox.setText(Integer.toString(ans));
+                }
+
+                else if (inputTextBox2.getText().equals("/")) {
+                    Calculate.divide(
+                            Integer.parseInt(inputTextBox1.getText()),
+                            Integer.parseInt(inputTextBox3.getText()),
+                            inputTextBox2.getText()
+                    );
+                    ansBox.setText(Integer.toString(ans));
                 }
             }
         });
-
-
     }
-
-
 }
